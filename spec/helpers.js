@@ -367,7 +367,7 @@ describe('helpers', function () {
     });
 
     it('the helper hash should augment the global hash', function () {
-      handlebarsEnv.registerHelper('test_helper', function () {
+      guardrailsEnv.registerHelper('test_helper', function () {
         return 'found it!';
       });
 
@@ -386,20 +386,20 @@ describe('helpers', function () {
 
   describe('registration', function () {
     it('unregisters', function () {
-      handlebarsEnv.helpers = {};
+      guardrailsEnv.helpers = {};
 
-      handlebarsEnv.registerHelper('foo', function () {
+      guardrailsEnv.registerHelper('foo', function () {
         return 'fail';
       });
-      handlebarsEnv.unregisterHelper('foo');
-      equals(handlebarsEnv.helpers.foo, undefined);
+      guardrailsEnv.unregisterHelper('foo');
+      equals(guardrailsEnv.helpers.foo, undefined);
     });
 
     it('allows multiple globals', function () {
-      var helpers = handlebarsEnv.helpers;
-      handlebarsEnv.helpers = {};
+      var helpers = guardrailsEnv.helpers;
+      guardrailsEnv.helpers = {};
 
-      handlebarsEnv.registerHelper({
+      guardrailsEnv.registerHelper({
         if: helpers['if'],
         world: function () {
           return 'world!';
@@ -419,7 +419,7 @@ describe('helpers', function () {
     it('fails with multiple and args', function () {
       shouldThrow(
         function () {
-          handlebarsEnv.registerHelper(
+          guardrailsEnv.registerHelper(
             {
               world: function () {
                 return 'world!';
@@ -653,7 +653,7 @@ describe('helpers', function () {
         .withInput({ hello: 'Hello', world: 'world' })
         .withHelper('helperMissing', function (mesg, options) {
           if (options.name === 'link_to') {
-            return new Handlebars.SafeString('<a>' + mesg + '</a>');
+            return new Guardrails.SafeString('<a>' + mesg + '</a>');
           }
         })
         .toCompileTo('Hello <a>world</a>');
@@ -664,7 +664,7 @@ describe('helpers', function () {
         .withInput({ hello: 'Hello', world: 'world' })
         .withHelper('helperMissing', function (options) {
           if (options.name === 'link_to') {
-            return new Handlebars.SafeString('<a>winning</a>');
+            return new Guardrails.SafeString('<a>winning</a>');
           }
         })
         .toCompileTo('Hello <a>winning</a>');
@@ -755,7 +755,7 @@ describe('helpers', function () {
   });
 
   describe('blockHelperMissing', function () {
-    it('lambdas are resolved by blockHelperMissing, not handlebars proper', function () {
+    it('lambdas are resolved by blockHelperMissing, not guardrails proper', function () {
       expectTemplate('{{#truthy}}yep{{/truthy}}')
         .withInput({
           truthy: function () {

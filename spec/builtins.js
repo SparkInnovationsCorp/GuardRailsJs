@@ -185,7 +185,7 @@ describe('builtin helpers', function () {
 
   describe('#each', function () {
     beforeEach(function () {
-      handlebarsEnv.registerHelper('detectDataInsideEach', function (options) {
+      guardrailsEnv.registerHelper('detectDataInsideEach', function (options) {
         return options.data && options.data.exclaim;
       });
     });
@@ -503,7 +503,7 @@ describe('builtin helpers', function () {
 
     it('each on implicit context', function () {
       expectTemplate('{{#each}}{{text}}! {{/each}}cruel world!').toThrow(
-        handlebarsEnv.Exception,
+        guardrailsEnv.Exception,
         'Must pass iterator to #each'
       );
     });
@@ -621,7 +621,7 @@ describe('builtin helpers', function () {
 
     it('should call logger at default level', function () {
       var levelArg, logArg;
-      handlebarsEnv.log = function (level, arg) {
+      guardrailsEnv.log = function (level, arg) {
         levelArg = level;
         logArg = arg;
       };
@@ -636,7 +636,7 @@ describe('builtin helpers', function () {
 
     it('should call logger at data level', function () {
       var levelArg, logArg;
-      handlebarsEnv.log = function (level, arg) {
+      guardrailsEnv.log = function (level, arg) {
         levelArg = level;
         logArg = arg;
       };

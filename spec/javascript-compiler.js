@@ -1,19 +1,19 @@
 describe('javascript-compiler api', function () {
-  if (!Handlebars.JavaScriptCompiler) {
+  if (!Guardrails.JavaScriptCompiler) {
     return;
   }
 
   describe('#nameLookup', function () {
     var $superName;
     beforeEach(function () {
-      $superName = handlebarsEnv.JavaScriptCompiler.prototype.nameLookup;
+      $superName = guardrailsEnv.JavaScriptCompiler.prototype.nameLookup;
     });
     afterEach(function () {
-      handlebarsEnv.JavaScriptCompiler.prototype.nameLookup = $superName;
+      guardrailsEnv.JavaScriptCompiler.prototype.nameLookup = $superName;
     });
 
     it('should allow override', function () {
-      handlebarsEnv.JavaScriptCompiler.prototype.nameLookup = function (
+      guardrailsEnv.JavaScriptCompiler.prototype.nameLookup = function (
         parent,
         name
       ) {
@@ -37,18 +37,18 @@ describe('javascript-compiler api', function () {
   describe('#compilerInfo', function () {
     var $superCheck, $superInfo;
     beforeEach(function () {
-      $superCheck = handlebarsEnv.VM.checkRevision;
-      $superInfo = handlebarsEnv.JavaScriptCompiler.prototype.compilerInfo;
+      $superCheck = guardrailsEnv.VM.checkRevision;
+      $superInfo = guardrailsEnv.JavaScriptCompiler.prototype.compilerInfo;
     });
     afterEach(function () {
-      handlebarsEnv.VM.checkRevision = $superCheck;
-      handlebarsEnv.JavaScriptCompiler.prototype.compilerInfo = $superInfo;
+      guardrailsEnv.VM.checkRevision = $superCheck;
+      guardrailsEnv.JavaScriptCompiler.prototype.compilerInfo = $superInfo;
     });
     it('should allow compilerInfo override', function () {
-      handlebarsEnv.JavaScriptCompiler.prototype.compilerInfo = function () {
+      guardrailsEnv.JavaScriptCompiler.prototype.compilerInfo = function () {
         return 'crazy';
       };
-      handlebarsEnv.VM.checkRevision = function (compilerInfo) {
+      guardrailsEnv.VM.checkRevision = function (compilerInfo) {
         if (compilerInfo !== 'crazy') {
           throw new Error("It didn't work");
         }
@@ -61,20 +61,20 @@ describe('javascript-compiler api', function () {
   describe('buffer', function () {
     var $superAppend, $superCreate;
     beforeEach(function () {
-      handlebarsEnv.JavaScriptCompiler.prototype.forceBuffer = true;
-      $superAppend = handlebarsEnv.JavaScriptCompiler.prototype.appendToBuffer;
+      guardrailsEnv.JavaScriptCompiler.prototype.forceBuffer = true;
+      $superAppend = guardrailsEnv.JavaScriptCompiler.prototype.appendToBuffer;
       $superCreate =
-        handlebarsEnv.JavaScriptCompiler.prototype.initializeBuffer;
+        guardrailsEnv.JavaScriptCompiler.prototype.initializeBuffer;
     });
     afterEach(function () {
-      handlebarsEnv.JavaScriptCompiler.prototype.forceBuffer = false;
-      handlebarsEnv.JavaScriptCompiler.prototype.appendToBuffer = $superAppend;
-      handlebarsEnv.JavaScriptCompiler.prototype.initializeBuffer =
+      guardrailsEnv.JavaScriptCompiler.prototype.forceBuffer = false;
+      guardrailsEnv.JavaScriptCompiler.prototype.appendToBuffer = $superAppend;
+      guardrailsEnv.JavaScriptCompiler.prototype.initializeBuffer =
         $superCreate;
     });
 
     it('should allow init buffer override', function () {
-      handlebarsEnv.JavaScriptCompiler.prototype.initializeBuffer =
+      guardrailsEnv.JavaScriptCompiler.prototype.initializeBuffer =
         function () {
           return this.quotedString('foo_');
         };
@@ -83,7 +83,7 @@ describe('javascript-compiler api', function () {
         .toCompileTo('foo_food ');
     });
     it('should allow append buffer override', function () {
-      handlebarsEnv.JavaScriptCompiler.prototype.appendToBuffer = function (
+      guardrailsEnv.JavaScriptCompiler.prototype.appendToBuffer = function (
         string
       ) {
         return $superAppend.call(this, [string, ' + "_foo"']);
@@ -102,7 +102,7 @@ describe('javascript-compiler api', function () {
     ['test', 'abc123', 'abc_123'].forEach(function (validVariableName) {
       it("should return true for '" + validVariableName + "'", function () {
         expect(
-          handlebarsEnv.JavaScriptCompiler.isValidJavaScriptVariableName(
+          guardrailsEnv.JavaScriptCompiler.isValidJavaScriptVariableName(
             validVariableName
           )
         ).to.be.true();
@@ -111,7 +111,7 @@ describe('javascript-compiler api', function () {
     [('123test', 'abc()', 'abc.cde')].forEach(function (invalidVariableName) {
       it("should return true for '" + invalidVariableName + "'", function () {
         expect(
-          handlebarsEnv.JavaScriptCompiler.isValidJavaScriptVariableName(
+          guardrailsEnv.JavaScriptCompiler.isValidJavaScriptVariableName(
             invalidVariableName
           )
         ).to.be.false();

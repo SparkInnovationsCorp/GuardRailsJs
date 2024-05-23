@@ -33,18 +33,18 @@
     <script>
       requirejs.config({
         paths: {
-          handlebars: '/dist/handlebars',
+          guardrails: '/dist/guardrails',
           tests: '/tmp/tests'
         }
       });
 
       var CompilerContext = {
         compile: function(template, options) {
-          var templateSpec = handlebarsEnv.precompile(template, options);
-          return handlebarsEnv.template(safeEval(templateSpec));
+          var templateSpec = guardrailsEnv.precompile(template, options);
+          return guardrailsEnv.template(safeEval(templateSpec));
         },
         compileWithPartial: function(template, options) {
-          return handlebarsEnv.compile(template, options);
+          return guardrailsEnv.compile(template, options);
         }
       };
 
@@ -62,8 +62,8 @@
     <script>
       onload = function(){
 
-        require(['handlebars'], function(Handlebars) {
-          window.Handlebars = Handlebars;
+        require(['guardrails'], function(Guardrails) {
+          window.Guardrails = Guardrails;
 
           require(['tests'], function() {
             mocha.globals(['mochaResults'])

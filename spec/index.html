@@ -27,16 +27,16 @@
       window.expect = chai.expect;
       mocha.setup('bdd');
     </script>
-    <script src="/dist/handlebars.js"></script>
+    <script src="/dist/guardrails.js"></script>
     <script src="/spec/env/common.js"></script>
     <script>
       var CompilerContext = {
         compile: function(template, options) {
-          var templateSpec = handlebarsEnv.precompile(template, options);
-          return handlebarsEnv.template(safeEval(templateSpec));
+          var templateSpec = guardrailsEnv.precompile(template, options);
+          return guardrailsEnv.template(safeEval(templateSpec));
         },
         compileWithPartial: function(template, options) {
-          return handlebarsEnv.compile(template, options);
+          return guardrailsEnv.compile(template, options);
         }
       };
 

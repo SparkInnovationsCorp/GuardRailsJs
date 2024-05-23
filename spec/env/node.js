@@ -8,15 +8,15 @@ global.expect = chai.expect;
 
 global.sinon = require('sinon');
 
-global.Handlebars = require('../../lib');
+global.Guardrails = require('../../lib');
 
 global.CompilerContext = {
   compile: function (template, options) {
-    var templateSpec = handlebarsEnv.precompile(template, options);
-    return handlebarsEnv.template(safeEval(templateSpec));
+    var templateSpec = guardrailsEnv.precompile(template, options);
+    return guardrailsEnv.template(safeEval(templateSpec));
   },
   compileWithPartial: function (template, options) {
-    return handlebarsEnv.compile(template, options);
+    return guardrailsEnv.compile(template, options);
   },
 };
 

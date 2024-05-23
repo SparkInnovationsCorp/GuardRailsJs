@@ -65,7 +65,7 @@ describe('partials', function () {
       })
       .withPartial('dude', '{{name}} ({{url}}) ')
       .toThrow(
-        Handlebars.Exception,
+        Guardrails.Exception,
         'The partial "missing" could not be found'
       );
   });
@@ -158,7 +158,7 @@ describe('partials', function () {
 
   it('rendering undefined partial throws an exception', function () {
     expectTemplate('{{> whatever}}').toThrow(
-      Handlebars.Exception,
+      Guardrails.Exception,
       'The partial "whatever" could not be found'
     );
   });
@@ -167,16 +167,16 @@ describe('partials', function () {
     shouldThrow(
       function () {
         var undef;
-        handlebarsEnv.registerPartial('undefined_test', undef);
+        guardrailsEnv.registerPartial('undefined_test', undef);
       },
-      Handlebars.Exception,
+      Guardrails.Exception,
       'Attempting to register a partial called "undefined_test" as undefined'
     );
   });
 
   it('rendering template partial in vm mode throws an exception', function () {
     expectTemplate('{{> whatever}}').toThrow(
-      Handlebars.Exception,
+      Guardrails.Exception,
       'The partial "whatever" could not be found'
     );
   });
@@ -222,7 +222,7 @@ describe('partials', function () {
   });
 
   it('Global Partials', function () {
-    handlebarsEnv.registerPartial('globalTest', '{{anotherDude}}');
+    guardrailsEnv.registerPartial('globalTest', '{{anotherDude}}');
 
     expectTemplate('Dudes: {{> shared/dude}} {{> globalTest}}')
       .withInput({ name: 'Jeepers', anotherDude: 'Creepers' })
@@ -230,12 +230,12 @@ describe('partials', function () {
       .withMessage('Partials can use globals or passed')
       .toCompileTo('Dudes: Jeepers Creepers');
 
-    handlebarsEnv.unregisterPartial('globalTest');
-    equals(handlebarsEnv.partials.globalTest, undefined);
+    guardrailsEnv.unregisterPartial('globalTest');
+    equals(guardrailsEnv.partials.globalTest, undefined);
   });
 
   it('Multiple partial registration', function () {
-    handlebarsEnv.registerPartial({
+    guardrailsEnv.registerPartial({
       'shared/dude': '{{name}}',
       globalTest: '{{anotherDude}}',
     });
@@ -292,14 +292,14 @@ describe('partials', function () {
   });
 
   it('throw on missing partial', function () {
-    var compile = handlebarsEnv.compile;
+    var compile = guardrailsEnv.compile;
     var compileWithPartial = CompilerContext.compileWithPartial;
-    handlebarsEnv.compile = undefined;
+    guardrailsEnv.compile = undefined;
     CompilerContext.compileWithPartial = CompilerContext.compile;
     expectTemplate('{{> dude}}')
       .withPartials({ dude: 'fail' })
       .toThrow(Error, /The partial dude could not be compiled/);
-    handlebarsEnv.compile = compile;
+    guardrailsEnv.compile = compile;
     CompilerContext.compileWithPartial = compileWithPartial;
   });
 
@@ -552,8 +552,8 @@ describe('partials', function () {
   });
 
   it('should pass compiler flags', function () {
-    if (Handlebars.compile) {
-      var env = Handlebars.create();
+    if (Guardrails.compile) {
+      var env = Guardrails.create();
       env.registerPartial('partial', '{{foo}}');
       var template = env.compile('{{foo}} {{> partial}}', { noEscape: true });
       equal(template({ foo: '<' }), '< <');

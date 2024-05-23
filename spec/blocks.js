@@ -405,37 +405,37 @@ describe('blocks', function () {
 
     describe('registration', function () {
       it('unregisters', function () {
-        handlebarsEnv.decorators = {};
+        guardrailsEnv.decorators = {};
 
-        handlebarsEnv.registerDecorator('foo', function () {
+        guardrailsEnv.registerDecorator('foo', function () {
           return 'fail';
         });
 
-        equals(!!handlebarsEnv.decorators.foo, true);
-        handlebarsEnv.unregisterDecorator('foo');
-        equals(handlebarsEnv.decorators.foo, undefined);
+        equals(!!guardrailsEnv.decorators.foo, true);
+        guardrailsEnv.unregisterDecorator('foo');
+        equals(guardrailsEnv.decorators.foo, undefined);
       });
 
       it('allows multiple globals', function () {
-        handlebarsEnv.decorators = {};
+        guardrailsEnv.decorators = {};
 
-        handlebarsEnv.registerDecorator({
+        guardrailsEnv.registerDecorator({
           foo: function () {},
           bar: function () {},
         });
 
-        equals(!!handlebarsEnv.decorators.foo, true);
-        equals(!!handlebarsEnv.decorators.bar, true);
-        handlebarsEnv.unregisterDecorator('foo');
-        handlebarsEnv.unregisterDecorator('bar');
-        equals(handlebarsEnv.decorators.foo, undefined);
-        equals(handlebarsEnv.decorators.bar, undefined);
+        equals(!!guardrailsEnv.decorators.foo, true);
+        equals(!!guardrailsEnv.decorators.bar, true);
+        guardrailsEnv.unregisterDecorator('foo');
+        guardrailsEnv.unregisterDecorator('bar');
+        equals(guardrailsEnv.decorators.foo, undefined);
+        equals(guardrailsEnv.decorators.bar, undefined);
       });
 
       it('fails with multiple and args', function () {
         shouldThrow(
           function () {
-            handlebarsEnv.registerDecorator(
+            guardrailsEnv.registerDecorator(
               {
                 world: function () {
                   return 'world!';

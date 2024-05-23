@@ -1,8 +1,8 @@
-if (typeof require !== 'undefined' && require.extensions['.handlebars']) {
+if (typeof require !== 'undefined' && require.extensions['.guardrails']) {
   describe('Require', function () {
-    it('Load .handlebars files with require()', function () {
+    it('Load .guardrails files with require()', function () {
       var template = require('./artifacts/example_1');
-      equal(template, require('./artifacts/example_1.handlebars'));
+      equal(template, require('./artifacts/example_1.guardrails'));
 
       var expected = 'foo\n';
       var result = template({ foo: 'foo' });

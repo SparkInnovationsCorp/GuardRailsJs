@@ -1,7 +1,7 @@
-global.handlebarsEnv = null;
+global.guardrailsEnv = null;
 
 beforeEach(function () {
-  global.handlebarsEnv = Handlebars.create();
+  global.guardrailsEnv = Guardrails.create();
 });
 
 describe('basic context', function () {
@@ -211,12 +211,12 @@ describe('basic context', function () {
   it('escaping expressions', function () {
     expectTemplate('{{{awesome}}}')
       .withInput({ awesome: "&'\\<>" })
-      .withMessage("expressions with 3 handlebars aren't escaped")
+      .withMessage("expressions with 3 guardrails aren't escaped")
       .toCompileTo("&'\\<>");
 
     expectTemplate('{{&awesome}}')
       .withInput({ awesome: "&'\\<>" })
-      .withMessage("expressions with {{& handlebars aren't escaped")
+      .withMessage("expressions with {{& guardrails aren't escaped")
       .toCompileTo("&'\\<>");
 
     expectTemplate('{{awesome}}')
@@ -234,7 +234,7 @@ describe('basic context', function () {
     expectTemplate('{{awesome}}')
       .withInput({
         awesome: function () {
-          return new Handlebars.SafeString("&'\\<>");
+          return new Guardrails.SafeString("&'\\<>");
         },
       })
       .withMessage("functions returning safestrings aren't escaped")

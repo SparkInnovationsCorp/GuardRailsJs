@@ -11,27 +11,27 @@ global.expect = chai.expect;
 
 global.sinon = require('sinon');
 
-global.Handlebars = 'no-conflict';
+global.Guardrails = 'no-conflict';
 
-var filename = 'dist/handlebars.js';
+var filename = 'dist/guardrails.js';
 if (global.minimizedTest) {
-  filename = 'dist/handlebars.min.js';
+  filename = 'dist/guardrails.min.js';
 }
-var distHandlebars = fs.readFileSync(
+var distGuardrails = fs.readFileSync(
   require.resolve('../../' + filename),
   'utf-8'
 );
-vm.runInThisContext(distHandlebars, filename);
+vm.runInThisContext(distGuardrails, filename);
 
 global.CompilerContext = {
   browser: true,
 
   compile: function (template, options) {
-    var templateSpec = handlebarsEnv.precompile(template, options);
-    return handlebarsEnv.template(safeEval(templateSpec));
+    var templateSpec = guardrailsEnv.precompile(template, options);
+    return guardrailsEnv.template(safeEval(templateSpec));
   },
   compileWithPartial: function (template, options) {
-    return handlebarsEnv.compile(template, options);
+    return guardrailsEnv.compile(template, options);
   },
 };
 
