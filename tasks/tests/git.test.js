@@ -8,7 +8,7 @@ const git = require('../util/git');
 
 const expect = chai.expect;
 
-const tmpBaseDir = path.join(os.tmpdir(), 'handlebars-task-tests');
+const tmpBaseDir = path.join(os.tmpdir(), 'guardrails-task-tests');
 const tmpDir = path.join(tmpBaseDir, Date.now().toString(36));
 const remoteDir = path.join(tmpDir, 'remote-repo');
 const cloneDir = path.join(tmpDir, 'clone-repo');

@@ -1,6 +1,6 @@
 module.exports = {
   context: {},
-  handlebars: 'Hello world',
+  guardrails: 'Hello world',
   dust: 'Hello world',
   mustache: 'Hello world',
 };

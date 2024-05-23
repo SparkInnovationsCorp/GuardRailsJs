@@ -1,6 +1,6 @@
 {
   "plugins": [
-    "@roundingwellos/babel-plugin-handlebars-inline-precompile"
+    "@roundingwellos/babel-plugin-guardrails-inline-precompile"
    // "istanbul"
   ],
   "presets": [

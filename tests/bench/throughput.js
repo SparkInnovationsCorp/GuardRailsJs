@@ -1,7 +1,7 @@
 var _ = require('underscore'),
   runner = require('./util/template-runner'),
   dust,
-  Handlebars,
+  Guardrails,
   Mustache;
 
 try {
@@ -20,34 +20,34 @@ function error() {
   throw new Error('EWOT');
 }
 
-function makeSuite(bench, name, template, handlebarsOnly) {
+function makeSuite(bench, name, template, guardrailsOnly) {
   // Create aliases to minimize any impact from having to walk up the closure tree.
   var templateName = name,
     context = template.context,
     partials = template.partials,
-    handlebarsOut,
+    guardrailsOut,
     compatOut,
     dustOut,
     mustacheOut;
 
-  var handlebar = Handlebars.compile(template.handlebars, { data: false }),
-    compat = Handlebars.compile(template.handlebars, {
+  var handlebar = Guardrails.compile(template.guardrails, { data: false }),
+    compat = Guardrails.compile(template.guardrails, {
       data: false,
       compat: true,
     }),
     options = { helpers: template.helpers };
   _.each(
-    template.partials && template.partials.handlebars,
+    template.partials && template.partials.guardrails,
     function (partial, partialName) {
-      Handlebars.registerPartial(
+      Guardrails.registerPartial(
         partialName,
-        Handlebars.compile(partial, { data: false })
+        Guardrails.compile(partial, { data: false })
       );
     }
   );
 
-  handlebarsOut = handlebar(context, options);
-  bench('handlebars', function () {
+  guardrailsOut = handlebar(context, options);
+  bench('guardrails', function () {
     handlebar(context, options);
   });
 
@@ -56,7 +56,7 @@ function makeSuite(bench, name, template, handlebarsOnly) {
     compat(context, options);
   });
 
-  if (handlebarsOnly) {
+  if (guardrailsOnly) {
     return;
   }
 
@@ -93,7 +93,7 @@ function makeSuite(bench, name, template, handlebarsOnly) {
   }
 
   // Hack around whitespace until we have whitespace control
-  handlebarsOut = handlebarsOut.replace(/\s/g, '');
+  guardrailsOut = guardrailsOut.replace(/\s/g, '');
   function compare(b, lang) {
     if (b == null) {
       return;
@@ -101,12 +101,12 @@ function makeSuite(bench, name, template, handlebarsOnly) {
 
     b = b.replace(/\s/g, '');
 
-    if (handlebarsOut !== b) {
+    if (guardrailsOut !== b) {
       throw new Error(
         'Template output mismatch: ' +
           name +
-          '\n\nHandlebars: ' +
-          handlebarsOut +
+          '\n\nGuardrails: ' +
+          guardrailsOut +
           '\n\n' +
           lang +
           ': ' +
@@ -122,7 +122,7 @@ function makeSuite(bench, name, template, handlebarsOnly) {
 
 module.exports = function (grunt, callback) {
   // Deferring load in case we are being run inline with the grunt build
-  Handlebars = require('../../lib');
+  Guardrails = require('../../lib');
 
   console.log('Execution Throughput');
   runner(grunt, makeSuite, function (times, scaled) {

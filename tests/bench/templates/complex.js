@@ -13,7 +13,7 @@ module.exports = {
     ],
   },
 
-  handlebars: fs.readFileSync(__dirname + '/complex.handlebars').toString(),
+  guardrails: fs.readFileSync(__dirname + '/complex.guardrails').toString(),
   dust: fs.readFileSync(__dirname + '/complex.dust').toString(),
   mustache: fs.readFileSync(__dirname + '/complex.mustache').toString(),
 };

@@ -5,9 +5,9 @@ module.exports = {
   },
   partials: {
     mustache: { recursion: '{{name}}{{#kids}}{{>recursion}}{{/kids}}' },
-    handlebars: { recursion: '{{name}}{{#each kids}}{{>recursion}}{{/each}}' },
+    guardrails: { recursion: '{{name}}{{#each kids}}{{>recursion}}{{/each}}' },
   },
-  handlebars: '{{name}}{{#each kids}}{{>recursion}}{{/each}}',
+  guardrails: '{{name}}{{#each kids}}{{>recursion}}{{/each}}',
   dust: '{name}{#kids}{>recursion:./}{/kids}',
   mustache: '{{name}}{{#kids}}{{>recursion}}{{/kids}}',
 };

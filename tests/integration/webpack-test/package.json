@@ -1,14 +1,14 @@
 {
   "name": "webpack-test",
-  "description": "Various tests with Handlebars and multiple webpack versions",
+  "description": "Various tests with Guardrails and multiple webpack versions",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
-    "handlebars": "file:../../..",
-    "handlebars-loader": "^1.7.1",
+    "guardrails": "file:../../..",
+    "guardrails-loader": "^1.7.1",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2"
   }

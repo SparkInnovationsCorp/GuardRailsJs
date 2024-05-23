@@ -7,17 +7,17 @@ async function waitForMochaAndAssertResult(page) {
   expect(mochaResults.failures).toBe(0);
 }
 
-test('Spec handlebars.js', async ({ page, baseURL }) => {
+test('Spec guardrails.js', async ({ page, baseURL }) => {
   await page.goto(`${baseURL}/spec/?headless=true`);
   await waitForMochaAndAssertResult(page);
 });
 
-test('Spec handlebars.js (UMD)', async ({ page, baseURL }) => {
+test('Spec guardrails.js (UMD)', async ({ page, baseURL }) => {
   await page.goto(`${baseURL}/spec/umd.html?headless=true`);
   await waitForMochaAndAssertResult(page);
 });
 
-test('Spec handlebars.runtime.js (UMD)', async ({ page, baseURL }) => {
+test('Spec guardrails.runtime.js (UMD)', async ({ page, baseURL }) => {
   await page.goto(`${baseURL}/spec/umd-runtime.html?headless=true`);
   await waitForMochaAndAssertResult(page);
 });

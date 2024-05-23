@@ -7,7 +7,7 @@ module.exports = {
       return 'Colors';
     },
   },
-  handlebars: '{{echo (header)}}',
+  guardrails: '{{echo (header)}}',
 };
 
 module.exports.context = module.exports.helpers;

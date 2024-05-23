@@ -1,17 +1,17 @@
 {
-  "name": "handlebars",
+  "name": "guardrails",
   "version": "5.0.0-alpha.1",
-  "description": "Handlebars provides the power necessary to let you build semantic templates effectively with no frustration",
-  "homepage": "https://handlebarsjs.com/",
+  "description": "Guardrails provides the power necessary to let you build semantic templates effectively with no frustration",
+  "homepage": "https://guardrailsjs.com/",
   "keywords": [
-    "handlebars",
+    "guardrails",
     "mustache",
     "template",
     "html"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/handlebars-lang/handlebars.js.git"
+    "url": "https://github.com/guardrails-lang/guardrails.js.git"
   },
   "author": "Yehuda Katz",
   "license": "MIT",
@@ -73,9 +73,9 @@
   },
   "main": "lib/index.js",
   "types": "types/index.d.ts",
-  "browser": "./dist/cjs/handlebars.js",
+  "browser": "./dist/cjs/guardrails.js",
   "bin": {
-    "handlebars": "bin/handlebars.js"
+    "guardrails": "bin/guardrails.js"
   },
   "scripts": {
     "build": "grunt build",
@@ -96,7 +96,7 @@
     "check-before-pull-request": "concurrently --kill-others-on-fail npm:lint npm:test"
   },
   "jspm": {
-    "main": "handlebars",
+    "main": "guardrails",
     "directories": {
       "lib": "dist/cjs"
     },

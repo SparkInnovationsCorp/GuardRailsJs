@@ -11,7 +11,7 @@
     "baseUrl": ".",
     "types": [],
     "paths": {
-      "handlebars": ["."]
+      "guardrails": ["."]
     }
   }
 }

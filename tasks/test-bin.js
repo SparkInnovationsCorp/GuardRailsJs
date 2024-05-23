@@ -9,7 +9,7 @@ const expect = chai.expect;
 
 const testCases = [
   {
-    binInputParameters: ['-a', 'spec/artifacts/empty.handlebars'],
+    binInputParameters: ['-a', 'spec/artifacts/empty.guardrails'],
     outputLocation: 'stdout',
     expectedOutputSpec: './spec/expected/empty.amd.js',
   },
@@ -18,7 +18,7 @@ const testCases = [
       '-a',
       '-f',
       'TEST_OUTPUT',
-      'spec/artifacts/empty.handlebars',
+      'spec/artifacts/empty.guardrails',
     ],
     outputLocation: 'TEST_OUTPUT',
     expectedOutputSpec: './spec/expected/empty.amd.js',
@@ -28,7 +28,7 @@ const testCases = [
       '-a',
       '-n',
       'CustomNamespace.templates',
-      'spec/artifacts/empty.handlebars',
+      'spec/artifacts/empty.guardrails',
     ],
     outputLocation: 'stdout',
     expectedOutputSpec: './spec/expected/empty.amd.namespace.js',
@@ -38,24 +38,24 @@ const testCases = [
       '-a',
       '--namespace',
       'CustomNamespace.templates',
-      'spec/artifacts/empty.handlebars',
+      'spec/artifacts/empty.guardrails',
     ],
     outputLocation: 'stdout',
     expectedOutputSpec: './spec/expected/empty.amd.namespace.js',
   },
   {
-    binInputParameters: ['-a', '-s', 'spec/artifacts/empty.handlebars'],
+    binInputParameters: ['-a', '-s', 'spec/artifacts/empty.guardrails'],
     outputLocation: 'stdout',
     expectedOutputSpec: './spec/expected/empty.amd.simple.js',
   },
   {
-    binInputParameters: ['-a', '-m', 'spec/artifacts/empty.handlebars'],
+    binInputParameters: ['-a', '-m', 'spec/artifacts/empty.guardrails'],
     outputLocation: 'stdout',
     expectedOutputSpec: './spec/expected/empty.amd.min.js',
   },
   {
     binInputParameters: [
-      'spec/artifacts/known.helpers.handlebars',
+      'spec/artifacts/known.helpers.guardrails',
       '-a',
       '-k',
       'someHelper',
@@ -90,20 +90,20 @@ const testCases = [
     binInputParameters: [
       '-a',
       '-p',
-      './spec/artifacts/partial.template.handlebars',
+      './spec/artifacts/partial.template.guardrails',
     ],
     outputLocation: 'stdout',
     expectedOutputSpec: './spec/expected/partial.template.js',
   },
   {
-    binInputParameters: ['spec/artifacts/empty.handlebars', '-c'],
+    binInputParameters: ['spec/artifacts/empty.guardrails', '-c'],
     outputLocation: 'stdout',
     expectedOutputSpec: './spec/expected/empty.common.js',
   },
   {
     binInputParameters: [
-      'spec/artifacts/empty.handlebars',
-      'spec/artifacts/empty.handlebars',
+      'spec/artifacts/empty.guardrails',
+      'spec/artifacts/empty.guardrails',
       '-a',
       '-n',
       'someNameSpace',
@@ -113,7 +113,7 @@ const testCases = [
   },
   {
     binInputParameters: [
-      'spec/artifacts/empty.handlebars',
+      'spec/artifacts/empty.guardrails',
       '-h',
       'some-path/',
       '-a',
@@ -123,7 +123,7 @@ const testCases = [
   },
   {
     binInputParameters: [
-      'spec/artifacts/partial.template.handlebars',
+      'spec/artifacts/partial.template.guardrails',
       '-r',
       'spec',
       '-a',
@@ -161,7 +161,7 @@ const testCases = [
     expectedOutputSpec: './spec/expected/source.map.amd.js',
   },
   {
-    binInputParameters: ['./spec/artifacts/bom.handlebars', '-b', '-a'],
+    binInputParameters: ['./spec/artifacts/bom.guardrails', '-b', '-a'],
     outputLocation: 'stdout',
     expectedOutputSpec: './spec/expected/bom.amd.js',
   },
@@ -170,7 +170,7 @@ const testCases = [
     binInputParameters: [
       '--amd',
       '--no-amd',
-      'spec/artifacts/empty.handlebars',
+      'spec/artifacts/empty.guardrails',
     ],
     outputLocation: 'stdout',
     expectedOutputSpec: './spec/expected/empty.common.js',
@@ -186,7 +186,7 @@ module.exports = function (grunt) {
         expectedOutputSpec,
         expectedOutput,
       }) => {
-        const stdout = executeBinHandlebars(...binInputParameters);
+        const stdout = executeBinGuardrails(...binInputParameters);
 
         if (!expectedOutput && expectedOutputSpec) {
           expectedOutput = fs.readFileSync(expectedOutputSpec, 'utf-8');
@@ -215,13 +215,13 @@ module.exports = function (grunt) {
 
 // helper functions
 
-function executeBinHandlebars(...args) {
+function executeBinGuardrails(...args) {
   if (os.platform() === 'win32') {
-    // On Windows, the executable handlebars.js file cannot be run directly
+    // On Windows, the executable guardrails.js file cannot be run directly
     const nodeJs = process.argv[0];
-    return execFilesSyncUtf8(nodeJs, ['./bin/handlebars.js'].concat(args));
+    return execFilesSyncUtf8(nodeJs, ['./bin/guardrails.js'].concat(args));
   }
-  return execFilesSyncUtf8('./bin/handlebars.js', args);
+  return execFilesSyncUtf8('./bin/guardrails.js', args);
 }
 
 function execFilesSyncUtf8(command, args) {
@@ -238,5 +238,5 @@ function normalizeCrlf(string) {
   if (typeof string === 'string') {
     return string.replace(/\r\n/g, '\n');
   }
-  return string;
+  return string.trim();
 }

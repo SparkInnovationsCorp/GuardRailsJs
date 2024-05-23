@@ -1,8 +1,8 @@
-Before creating a pull-request, please check https://github.com/handlebars-lang/handlebars.js/blob/master/CONTRIBUTING.md first.
+Before creating a pull-request, please check https://github.com/guardrails-lang/guardrails.js/blob/master/CONTRIBUTING.md first.
 
 Generally we like to see pull requests that
 
-- [ ] Please don't start pull requests for security issues. Instead, file a report at https://www.npmjs.com/advisories/report?package=handlebars
+- [ ] Please don't start pull requests for security issues. Instead, file a report at https://www.npmjs.com/advisories/report?package=guardrails
 - [ ] Maintain the existing code style
 - [ ] Are focused on a single change (i.e. avoid large refactoring or style adjustments in untouched code if not the primary goal of the pull request)
 - [ ] Have good commit messages

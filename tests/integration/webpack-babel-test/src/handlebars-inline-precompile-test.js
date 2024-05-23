@@ -1,8 +1,8 @@
-import * as Handlebars from 'handlebars/runtime';
-import hbs from 'handlebars-inline-precompile';
+import * as Guardrails from 'guardrails/runtime';
+import hbs from 'guardrails-inline-precompile';
 import { assertEquals } from '../../webpack-test/src/lib/assert';
 
-Handlebars.registerHelper('loud', function (text) {
+Guardrails.registerHelper('loud', function (text) {
   return text.toUpperCase();
 });
 

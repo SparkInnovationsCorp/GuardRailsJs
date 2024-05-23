@@ -1,7 +1,7 @@
 {
-  "name": "handlebars",
-  "repo": "components/handlebars.js",
+  "name": "guardrails",
+  "repo": "components/guardrails.js",
   "version": "1.0.0",
-  "main": "handlebars.js",
-  "scripts": ["handlebars.js"]
+  "main": "guardrails.js",
+  "scripts": ["guardrails.js"]
 }

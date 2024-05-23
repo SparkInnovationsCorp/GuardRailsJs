@@ -1,5 +1,5 @@
-# Handlebars-template fixtures in test cases need deterministic eol
-*.handlebars text eol=lf
+# Guardrails-template fixtures in test cases need deterministic eol
+*.guardrails text eol=lf
 *.hbs text eol=lf
 
 # Lexer files as well

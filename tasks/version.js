@@ -20,7 +20,7 @@ module.exports = function (grunt) {
 
     const replaceSpec = [
       {
-        path: 'lib/handlebars/base.js',
+        path: 'lib/guardrails/base.js',
         regex: /const VERSION = ['"](.*)['"];/,
         replacement: `const VERSION = '${version}';`,
       },
@@ -35,7 +35,7 @@ module.exports = function (grunt) {
         replacement: `"version": "${version}",`,
       },
       {
-        path: 'components/handlebars.js.nuspec',
+        path: 'components/guardrails.js.nuspec',
         regex: /<version>.*<\/version>/,
         replacement: `<version>${version}</version>`,
       },

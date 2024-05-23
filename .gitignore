@@ -8,7 +8,7 @@ npm-debug.log
 /yarn-error.log
 /yarn.lock
 node_modules
-/handlebars-release.tgz
+/guardrails-release.tgz
 .nyc_output
 
 # Generated files
@@ -16,3 +16,4 @@ node_modules
 /dist/
 /tests/integration/*/dist/
 /spec/tmp/*
+/.vs

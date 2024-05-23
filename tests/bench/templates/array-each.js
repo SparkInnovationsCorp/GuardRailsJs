@@ -7,7 +7,7 @@ module.exports = {
       { name: 'Shemp' },
     ],
   },
-  handlebars: '{{#each names}}{{name}}{{/each}}',
+  guardrails: '{{#each names}}{{name}}{{/each}}',
   dust: '{#names}{name}{/names}',
   mustache: '{{#names}}{{name}}{{/names}}',
 };

@@ -7,10 +7,10 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "handlebars": "file:../../.."
+    "guardrails": "file:../../.."
   },
   "scripts": {
-    "test": "node run-handlebars.js",
-    "test-precompile": "handlebars precompile-test-template.txt.hbs"
+    "test": "node run-guardrails.js",
+    "test-precompile": "guardrails precompile-test-template.txt.hbs"
   }
 }

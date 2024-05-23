@@ -17,6 +17,6 @@ module.exports = {
     path: __dirname + '/dist',
   },
   module: {
-    rules: [{ test: /\.handlebars$/, loader: 'handlebars-loader' }],
+    rules: [{ test: /\.guardrails$/, loader: 'guardrails-loader' }],
   },
 };

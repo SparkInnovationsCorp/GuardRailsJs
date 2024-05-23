@@ -1,5 +1,5 @@
-import Handlebars = require('handlebars')
+import Guardrails = require('guardrails')
 
-declare module "handlebars/runtime" {
+declare module "guardrails/runtime" {
    
 }

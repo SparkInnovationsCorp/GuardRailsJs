@@ -7,7 +7,7 @@ npm-debug.log
 .idea
 yarn-error.log
 node_modules
-/handlebars-release.tgz
+/guardrails-release.tgz
 .nyc_output
 
 # Generated files

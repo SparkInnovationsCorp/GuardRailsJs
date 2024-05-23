@@ -8,12 +8,12 @@ module.exports = {
   },
   partials: {
     mustache: { variables: 'Hello {{name}}! You have {{count}} new messages.' },
-    handlebars: {
+    guardrails: {
       variables: 'Hello {{name}}! You have {{count}} new messages.',
     },
   },
 
-  handlebars: '{{#each peeps}}{{>variables}}{{/each}}',
+  guardrails: '{{#each peeps}}{{>variables}}{{/each}}',
   dust: '{#peeps}{>variables/}{/peeps}',
   mustache: '{{#peeps}}{{>variables}}{{/peeps}}',
 };

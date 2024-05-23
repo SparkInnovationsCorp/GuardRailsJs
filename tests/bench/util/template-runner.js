@@ -5,19 +5,19 @@ var _ = require('underscore'),
 module.exports = function (grunt, makeSuite, callback) {
   var warmer = new BenchWarmer();
 
-  var handlebarsOnly = grunt.option('handlebars-only'),
+  var guardrailsOnly = grunt.option('guardrails-only'),
     grep = grunt.option('grep');
   if (grep) {
     grep = new RegExp(grep);
   }
 
   _.each(templates, function (template, name) {
-    if (!template.handlebars || (grep && !grep.test(name))) {
+    if (!template.guardrails || (grep && !grep.test(name))) {
       return;
     }
 
     warmer.suite(name, function (bench) {
-      makeSuite(bench, name, template, handlebarsOnly);
+      makeSuite(bench, name, template, guardrailsOnly);
     });
   });
 

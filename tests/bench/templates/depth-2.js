@@ -8,7 +8,7 @@ module.exports = {
     ],
     foo: 'bar',
   },
-  handlebars:
+  guardrails:
     '{{#each names}}{{#each name}}{{../bat}}{{../../foo}}{{/each}}{{/each}}',
   mustache: '{{#names}}{{#name}}{{bat}}{{foo}}{{/name}}{{/names}}',
 };

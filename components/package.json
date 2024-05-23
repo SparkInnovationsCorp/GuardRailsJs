@@ -1,17 +1,17 @@
 {
-  "name": "handlebars",
+  "name": "guardrails",
   "version": "5.0.0-alpha.1",
   "license": "MIT",
   "jspm": {
-    "main": "handlebars",
+    "main": "guardrails",
     "shim": {
-      "handlebars": {
-        "exports": "Handlebars"
+      "guardrails": {
+        "exports": "Guardrails"
       }
     },
     "files": [
-      "handlebars.js",
-      "handlebars.runtime.js"
+      "guardrails.js",
+      "guardrails.runtime.js"
     ],
     "buildConfig": {
       "minify": true
